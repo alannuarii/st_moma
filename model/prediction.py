@@ -6,7 +6,7 @@ md_moma = 'model/mode_operasi.pkl'
 
 mode = ['1PV', '1PV-1BSS', '2PV', '2PV-1BSS', '2PV-2BSS', '1PV-1BSS-1DG', '2PV-2BSS-1DG', '2PV-2BSS-2DG', 'NOT OPERATING']
 
-def mode_prediction(pv, bss, pltd, cuaca, irr):
+def mode_prediction(pltd, pv, bss, cuaca, irr):
     data = {'pltd': pltd,
     'pv': pv,
     'bss': bss,
