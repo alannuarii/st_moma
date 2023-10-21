@@ -40,7 +40,15 @@ if irradiance >= 700:
 else:
     kode_irr = 0
 
+if pv == 0:
+    bss = 0
+    dg = 0
 
 # MAIN
 st.subheader("REKOMENDASI MODE OPERASI:")
-st.title(mode_prediction(pltd=dg, pv=pv, bss=bss, cuaca=kode_cuaca, irr=kode_irr))
+if pv > 0:
+    st.title(mode_prediction(pltd=dg, pv=pv, bss=bss, cuaca=kode_cuaca, irr=kode_irr))
+else:
+    st.title('NOT OPERATING')
+  
+    
