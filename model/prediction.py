@@ -1,12 +1,12 @@
 import pandas as pd
-import pickle
+from joblib import load
 
 # Inisiasi File Model
 md_moma = 'model/mode_operasi.pkl'
 
-mode = ['1PV', '1PV-1BSS', '2PV', '2PV-1BSS', '2PV-2BSS', '1PV-1BSS-1DG', '2PV-2BSS-1DG', '2PV-2BSS-2DG', 'NOT OPERATING']
+# mode = ['1PV', '1PV-1BSS', '2PV', '2PV-1BSS', '2PV-2BSS', '1PV-1BSS-1DG', '2PV-2BSS-1DG', '2PV-2BSS-2DG', 'NOT OPERATING']
 
-def mode_prediction(pltd, pv, bss, cuaca, irr):
+def mode_prediction(pv, bss, pltd, cuaca, irr):
     data = {'pltd': pltd,
     'pv': pv,
     'bss': bss,
@@ -15,9 +15,11 @@ def mode_prediction(pltd, pv, bss, cuaca, irr):
 
     features = pd.DataFrame(data, index=[0])
 
-    with open(md_moma, 'rb') as file:
-        loaded_model = pickle.load(file)
+    loaded_model = load(md_moma)
 
     prediction = loaded_model.predict(features)
 
     return prediction[0]
+
+
+print(mode_prediction(2,2,2,1,1))
