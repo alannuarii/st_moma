@@ -20,6 +20,3 @@ def mode_prediction(pv, bss, pltd, cuaca, irr):
     prediction = loaded_model.predict(features)
 
     return prediction[0]
-
-
-print(mode_prediction(2,2,2,1,1))
